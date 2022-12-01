@@ -90,7 +90,7 @@ public class LoginScreen extends javax.swing.JFrame {
         jLabel3.setText("Preencha os campos abaixo");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(jLabel3);
-        jLabel3.setBounds(0, 80, 360, 16);
+        jLabel3.setBounds(80, 80, 210, 16);
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -98,7 +98,7 @@ public class LoginScreen extends javax.swing.JFrame {
         jLabel4.setText("SECURITY SANTAHME");
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(jLabel4);
-        jLabel4.setBounds(0, 50, 360, 25);
+        jLabel4.setBounds(80, 50, 210, 25);
 
         txtNome.setBackground(new java.awt.Color(255, 255, 255));
         txtNome.setForeground(new java.awt.Color(0, 0, 0));

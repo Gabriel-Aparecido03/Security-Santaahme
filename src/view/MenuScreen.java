@@ -94,6 +94,7 @@ public class MenuScreen extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         txtTipoLocacao = new javax.swing.JTextField();
         btnCadastrarAlocacao = new javax.swing.JButton();
+        btnCadastrarAlocacao1 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         btnConsultarEmpresa1 = new javax.swing.JToggleButton();
@@ -484,6 +485,17 @@ public class MenuScreen extends javax.swing.JFrame {
             }
         });
 
+        btnCadastrarAlocacao1.setBackground(new java.awt.Color(102, 204, 255));
+        btnCadastrarAlocacao1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCadastrarAlocacao1.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadastrarAlocacao1.setText("Atualizar");
+        btnCadastrarAlocacao1.setBorder(null);
+        btnCadastrarAlocacao1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarAlocacao1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -496,7 +508,8 @@ public class MenuScreen extends javax.swing.JFrame {
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboLocacaoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14)
-                            .addComponent(comboLocacaoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(comboLocacaoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCadastrarAlocacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(49, 49, 49)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTipoLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -521,7 +534,7 @@ public class MenuScreen extends javax.swing.JFrame {
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtDetalhesLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboLocacaoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
                     .addComponent(jLabel16))
@@ -530,10 +543,12 @@ public class MenuScreen extends javax.swing.JFrame {
                     .addComponent(txtQtdHorasLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboLocacaoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(btnCadastrarAlocacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addComponent(txtTipoLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(btnCadastrarAlocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73))
         );
@@ -566,6 +581,11 @@ public class MenuScreen extends javax.swing.JFrame {
         txtConsultaAlocacao.setBackground(new java.awt.Color(204, 204, 204));
         txtConsultaAlocacao.setForeground(new java.awt.Color(0, 0, 0));
         txtConsultaAlocacao.setBorder(null);
+        txtConsultaAlocacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtConsultaAlocacaoActionPerformed(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
@@ -656,6 +676,13 @@ public class MenuScreen extends javax.swing.JFrame {
     
     private class EmpresaAlocacao {
         String razaoSocial,id;
+    }
+    
+    private void apgarCombo() {
+        comboLocacaoEmpresa.removeAllItems();
+        comboLocacaoFunc.removeAllItems();
+        listaFunc.clear();
+        listaEmpresa.clear();
     }
     
     private class FuncAlocacao {
@@ -765,7 +792,7 @@ public class MenuScreen extends javax.swing.JFrame {
                     consultadoFunc.setSalario(Integer.parseInt(this.conectar.getResultSet().getString(5)));
                 }
                 System.out.println(consultadoFunc.getNome());
-                if(consultadoFunc.getNome().equals(" ")) {
+                if(consultadoFunc.getNome() == null) {
                     JOptionPane.showMessageDialog(null, "Verifique os dados digitados",
                     "Error!", JOptionPane.ERROR_MESSAGE);
                 }
@@ -865,7 +892,7 @@ public class MenuScreen extends javax.swing.JFrame {
                     novoEmpresa.setRazaoSocial(this.conectar.getResultSet().getString(2));
                     novoEmpresa.setEndereco(this.conectar.getResultSet().getString(3));
                 }
-                if(novoEmpresa.getCnpj().equals(" ")) {
+                if(novoEmpresa.getCnpj() == null) {
                     JOptionPane.showMessageDialog(null, "Verifique os dados digitados",
                     "Error!", JOptionPane.ERROR_MESSAGE);
                 }
@@ -1003,6 +1030,18 @@ public class MenuScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnConsultarEmpresa1ActionPerformed
 
+    private void txtConsultaAlocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConsultaAlocacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConsultaAlocacaoActionPerformed
+
+    private void btnCadastrarAlocacao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarAlocacao1ActionPerformed
+        this.apgarCombo();
+        this.puxarListaEmpresa();
+        this.puxarListaFuncionarios();
+        this.popularComboEmpresa();
+        this.popularComboFunc();
+    }//GEN-LAST:event_btnCadastrarAlocacao1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1041,6 +1080,7 @@ public class MenuScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Consultar;
     private javax.swing.JButton btnCadastrarAlocacao;
+    private javax.swing.JButton btnCadastrarAlocacao1;
     private javax.swing.JButton btnCadastrarEmpresa;
     private javax.swing.JButton btnCadastrarFunc;
     private javax.swing.JToggleButton btnConsultarEmpresa;

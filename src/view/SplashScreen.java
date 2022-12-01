@@ -76,7 +76,7 @@ public class SplashScreen extends javax.swing.JFrame {
         txtAuxProgressBarSplash.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtAuxProgressBarSplash.setForeground(new java.awt.Color(0, 0, 0));
         txtAuxProgressBarSplash.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtAuxProgressBarSplash.setText("jLabel2");
+        txtAuxProgressBarSplash.setText("carregando");
         txtAuxProgressBarSplash.setToolTipText("");
         jPanel1.add(txtAuxProgressBarSplash);
         txtAuxProgressBarSplash.setBounds(90, 300, 540, 20);
